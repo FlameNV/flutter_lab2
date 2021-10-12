@@ -210,85 +210,11 @@ class AddPeople extends StatelessWidget {
               const Text(
                   'Добавьте людей, которых вы можете знать, в свою сеть \n контактов и просматривайте их обновления в ленте.'),
               const Padding(padding: EdgeInsets.only(bottom: 30)),
-              Row(
-                children: [
-                  Card(
-                    child: Column(
-                      children: [
-                        const CircleAvatar(
-                          radius: 50,
-                          backgroundImage: AssetImage('assets/neo.jpg'),
-                        ),
-                        const Padding(padding: EdgeInsets.only(top: 20)),
-                        const Text(
-                          'Thomas A. \n Anderson',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const Padding(padding: EdgeInsets.only(top: 10)),
-                        const Text('Chosen by Matrix'),
-                        const Padding(padding: EdgeInsets.only(top: 50)),
-                        OutlinedButton(
-                          onPressed: () {},
-                          child: const Text('Установить \n контакт'),
-                          style: OutlinedButton.styleFrom(
-                            primary: Colors.blue,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Card(
-                    child: Column(
-                      children: [
-                        const CircleAvatar(
-                          radius: 50,
-                          backgroundImage: AssetImage('assets/john.jpg'),
-                        ),
-                        const Padding(padding: EdgeInsets.only(top: 20)),
-                        const Text(
-                          'John Wick',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const Padding(padding: EdgeInsets.only(top: 10)),
-                        const Text('Someone killed \n his dog'),
-                        const Padding(padding: EdgeInsets.only(top: 50)),
-                        OutlinedButton(
-                          onPressed: () {},
-                          child: const Text('Установить \n контакт'),
-                          style: OutlinedButton.styleFrom(
-                            primary: Colors.blue,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Card(
-                    child: Column(
-                      children: [
-                        const CircleAvatar(
-                          radius: 50,
-                          backgroundImage: AssetImage('assets/geralt.png'),
-                        ),
-                        const Padding(padding: EdgeInsets.only(top: 20)),
-                        const Text(
-                          'Geralt of Rivia \n',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const Padding(padding: EdgeInsets.only(top: 10)),
-                        const Text('Struggles with C++'),
-                        const Padding(padding: EdgeInsets.only(top: 50)),
-                        OutlinedButton(
-                          onPressed: () {},
-                          child: const Text('Установить \n контакт'),
-                          style: OutlinedButton.styleFrom(
-                            primary: Colors.blue,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              )
+            Row(
+              children: [
+                ProfileCards(),
+              ],
+            )
             ],
           ),
         ],
@@ -296,6 +222,52 @@ class AddPeople extends StatelessWidget {
     );
   }
 }
+
+class ProfileCards extends StatelessWidget {
+  const ProfileCards({Key? key}) : super(key: key);
+
+  profileCard(
+      String imagePath, String name, String profileStatus
+      ) {
+    return Card(
+      child: Column(
+        children: [
+          CircleAvatar(
+            radius: 50,
+            backgroundImage: AssetImage(imagePath),
+          ),
+          const Padding(padding: EdgeInsets.only(top: 20)),
+          Text(
+            name,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          const Padding(padding: EdgeInsets.only(top: 10)),
+          Text(profileStatus),
+          const Padding(padding: EdgeInsets.only(top: 50)),
+          OutlinedButton(
+            onPressed: () {},
+            child: const Text('Установить \n контакт'),
+            style: OutlinedButton.styleFrom(
+              primary: Colors.blue,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        profileCard('assets/neo.jpg', 'Thomas A. \n Anderson', 'Chosen by Matrix'),
+        profileCard('assets/john.jpg', 'John Wick', 'Someone killed \n his dog'),
+        profileCard('assets/geralt.png', 'Geralt of Rivia \n', 'Struggles with C++')
+      ],
+    );
+  }
+}
+
 
 class LinkedInIcon {
   LinkedInIcon._();
