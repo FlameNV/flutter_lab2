@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: const Color(0xF3F2EFEF)),
       home: Scaffold(
           appBar: AppBar(
+            leading: IconButton(onPressed: () {}, icon: const Icon(LinkedInIcon.icon)),
             actions: [
-              IconButton(onPressed: () {}, icon: const Icon(LinkedInIcon.icon)),
               IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
               IconButton(onPressed: () {}, icon: const Icon(Icons.home)),
               IconButton(onPressed: () {}, icon: const Icon(Icons.people)),
@@ -128,8 +128,8 @@ class PostNav extends StatelessWidget {
     return Container(
       color: const Color(0xFEFEFEFE),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
           Column(
             children: [
               const Padding(padding: EdgeInsets.only(top: 10)),
@@ -210,11 +210,11 @@ class AddPeople extends StatelessWidget {
               const Text(
                   'Добавьте людей, которых вы можете знать, в свою сеть \n контактов и просматривайте их обновления в ленте.'),
               const Padding(padding: EdgeInsets.only(bottom: 30)),
-            Row(
-              children: [
-                ProfileCards(),
-              ],
-            )
+              Row(
+                children: [
+                  ProfileCards(),
+                ],
+              )
             ],
           ),
         ],
@@ -226,9 +226,7 @@ class AddPeople extends StatelessWidget {
 class ProfileCards extends StatelessWidget {
   const ProfileCards({Key? key}) : super(key: key);
 
-  profileCard(
-      String imagePath, String name, String profileStatus
-      ) {
+  profileCard(String imagePath, String name, String profileStatus) {
     return Card(
       child: Column(
         children: [
@@ -260,14 +258,16 @@ class ProfileCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        profileCard('assets/neo.jpg', 'Thomas A. \n Anderson', 'Chosen by Matrix'),
-        profileCard('assets/john.jpg', 'John Wick', 'Someone killed \n his dog'),
-        profileCard('assets/geralt.png', 'Geralt of Rivia \n', 'Struggles with C++')
+        profileCard(
+            'assets/neo.jpg', 'Thomas A. \n Anderson', 'Chosen by Matrix'),
+        profileCard(
+            'assets/john.jpg', 'John Wick', 'Someone killed \n his dog'),
+        profileCard(
+            'assets/geralt.png', 'Geralt of Rivia \n', 'Struggles with C++')
       ],
     );
   }
 }
-
 
 class LinkedInIcon {
   LinkedInIcon._();
